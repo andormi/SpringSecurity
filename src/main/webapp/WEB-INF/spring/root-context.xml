@@ -7,6 +7,6 @@
 	
 	<!-- Root Context: defines shared resources visible to all other web components -->
 	
-	<context:component-scan base-package="su.taliesyn.security"></context:component-scan>
+	<context:component-scan base-package="su.taliesyn.security"/>
 	
 </beans>
