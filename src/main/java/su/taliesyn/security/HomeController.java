@@ -1,6 +1,8 @@
 package su.taliesyn.security;
 
 
+import java.security.Principal;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -15,6 +17,24 @@ public class HomeController {
 	
 //	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 
+	@RequestMapping(value = "/accessDenied", method = RequestMethod.GET)
+	public ModelAndView accesssDenied(Principal user) {
+
+		ModelAndView model = new ModelAndView();
+
+		// russian text is still without localization 
+		if (user != null) {
+			model.addObject("errorMsg", user.getName() + ", у вас нет доступа к этой странице!");
+		} else {
+			model.addObject("errorMsg", "У вас нет доступа к этой странице!");
+		}
+
+		model.setViewName("/content/accessDenied");
+		return model;
+
+	}
+	
+	
 	@RequestMapping(value = "/user", method = RequestMethod.GET)
 	public String mainPage() {
 
