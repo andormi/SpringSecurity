@@ -5,20 +5,19 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-4.0.xsd
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.1.xsd">
 
-
 	<http use-expressions="true">
 		<csrf disabled="true"/>
 		
 		<intercept-url pattern="/user" access="isAuthenticated()" />
 		<intercept-url pattern="/admin" access="isAuthenticated()" />
 		
-		<form-login login-page='/login' 
+		<form-login login-page="/login?"
 			default-target-url="/user"
-			authentication-failure-url="/login?login_error=1" 
+			authentication-failure-url="/login?error=true" 
 			username-parameter="user_login"
 			password-parameter="password_login" />
 			
-		<logout logout-success-url="/login?logout" />		
+		<logout logout-success-url="/login" />		
 			
 	</http>
 
@@ -27,7 +26,6 @@
 		<authentication-provider>
 			<user-service>
 				<user name="user" password="user" authorities="ROLE_USER" />
-				<user name="admin" password="admin" authorities="ROLE_ADMIN" />
 			</user-service>
 		</authentication-provider>
 	</authentication-manager>
