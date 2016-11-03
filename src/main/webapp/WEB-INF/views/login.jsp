@@ -23,15 +23,16 @@
 		<fieldset class="boxBody">
 			<label> Username </label> <input type='text' name='user_login' value=''>
 			<label> Password </label> <input type='password' name='password_login' />
+			
+			<c:if test="${not empty error}">
+				<div class="error" style="text-align: right;">${error}</div>
+			</c:if>
 		</fieldset>
 
 		<footer>
+			<input name="remember-me" type="checkbox" class="checkAdmin" />
+			<label for="remember-me">Remember me</label>
 			<input type="submit" value="Submit" class="btnLogin">
-				
-			<c:if test="${not empty error}">
-				<span class="error">${error}</span>
-			</c:if>
-			
 		</footer>
 
 	</form>

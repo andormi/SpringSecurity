@@ -15,6 +15,9 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class HomeController {
 	
+//	@Autowired
+//	private AccessDecisionManager accessDecisionManager;
+	
 //	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 
 	@RequestMapping(value = "/accessDenied", method = RequestMethod.GET)
@@ -38,6 +41,8 @@ public class HomeController {
 	@RequestMapping(value = "/user", method = RequestMethod.GET)
 	public String mainPage() {
 
+//		System.out.println(accessDecisionManager);
+//		printUserDetails();
 		return "/content/user";
 
 	}
@@ -48,7 +53,20 @@ public class HomeController {
 		return "/content/admin";
 
 	}
+	
+/*
+	private void printUserDetails() {
+		UserDetails userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		logger.info("password = " + userDetails.getPassword());
+		logger.info("username = " + userDetails.getUsername());
 
+		for (GrantedAuthority auth : userDetails.getAuthorities()) {
+			logger.info(auth.getAuthority());
+		}
+
+	}
+*/
+	
 	@RequestMapping(value = { "/", "/login" }, method = RequestMethod.GET)
 	public ModelAndView login(@RequestParam(value = "error", required = false) String error) {
 
