@@ -32,7 +32,7 @@
 		<footer>
 			<input name="remember-me" type="checkbox" class="checkAdmin" />
 			<label for="remember-me">Remember me</label>
-			<input type="submit" value="Submit" class="btnLogin">
+			<input type="submit" value="Enter" class="btnLogin">
 		</footer>
 
 	</form>

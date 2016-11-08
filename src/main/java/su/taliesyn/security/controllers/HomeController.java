@@ -1,13 +1,21 @@
-package su.taliesyn.security;
+package su.taliesyn.security.controllers;
 
 
 import java.security.Principal;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+
+import su.taliesyn.security.services.ProcessInterface;
 
 /**
  * Handles requests for the application home page.
@@ -18,7 +26,10 @@ public class HomeController {
 //	@Autowired
 //	private AccessDecisionManager accessDecisionManager;
 	
-//	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
+	@Autowired
+	private ProcessInterface process;
+	
+	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 
 	@RequestMapping(value = "/accessDenied", method = RequestMethod.GET)
 	public ModelAndView accesssDenied(Principal user) {
@@ -41,6 +52,7 @@ public class HomeController {
 	@RequestMapping(value = "/user", method = RequestMethod.GET)
 	public String mainPage() {
 
+		logger.info(process.getMessage());
 //		System.out.println(accessDecisionManager);
 //		printUserDetails();
 		return "/content/user";
