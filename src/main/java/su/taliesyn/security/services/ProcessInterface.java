@@ -1,9 +1,12 @@
 package su.taliesyn.security.services;
 
+//import javax.annotation.security.RolesAllowed;
+
 import org.springframework.security.access.annotation.Secured;
 
 public interface ProcessInterface {
 
-	@Secured("ROLE_ADMIN")
+//	@RolesAllowed("ROLE_ADMIN")
+	@Secured({"ROLE_ADMIN", "ROLE_USER"})
 	String getMessage();
 }
